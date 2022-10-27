@@ -1,6 +1,12 @@
 const DICT_API = "160318e2-2c7c-4f22-82d0-424411422c32";
 
 
+async function spanDict(word){
+    let res = await fetch(`https://www.spanishdict.com/translate/${word}`);
+    let text = await res.text();
+    document.write(text);
+}
+
 async function defineRequest(word){
     let res = await fetch(`https://www.dictionaryapi.com/api/v3/references/spanish/json/${word}?key=${DICT_API}`);
     return res.json();
@@ -35,9 +41,10 @@ async function define(word){
     if(type == "definition")return {type, definitions: getDefinitions(json)};
 }
 
+let suggestionsElement = document.querySelector(".suggestions ul");
 function updateSuggestions(_suggestions){
     let suggestions = topOfArray(_suggestions, 9);
-    let ul = document.createElement("ul");
+    suggestionsElement.innerHTML = "";
     suggestions.forEach(text => {
         let li = document.createElement("li");
         li.tabIndex = 0;
@@ -46,10 +53,8 @@ function updateSuggestions(_suggestions){
             submit();
         })
         li.textContent = text;
-        ul.appendChild(li);
+        suggestionsElement.appendChild(li);
     })
-    results.innerHTML = "";
-    results.appendChild(ul);
 }
 
 function updateDefinitions(definitions){
@@ -67,6 +72,7 @@ function updateDefinitions(definitions){
 
         ul.appendChild(li);
     })
+    suggestionsElement.innerHTML = "";
     results.innerHTML = "";
     results.appendChild(ul);
 }
@@ -80,4 +86,10 @@ async function submit(){
     else results.innerHTML = "";
 }
 
-search.addEventListener("keyup", e => e.key == "Enter" && submit())
+let submitTimeout;
+
+search.addEventListener("keyup", e => {
+    clearTimeout(submitTimeout);
+    submitTimeout = setTimeout(submit, 500);
+    e.key == "Enter" && submit();
+})
