@@ -21,6 +21,7 @@
             color: #ddd;
             font-size: 1.5rem;
             font-family: 'Source Sans 3', sans-serif;
+            height: 100vh;
         }
         body,html{
             margin: 0;
@@ -91,21 +92,19 @@
 
         .search-outer{
             position: relative;
-            height: 50vh;
+            outline: 2px solid #333;
+            border-radius: .3rem;
+            background: #222;
         }
-        .search-outer:focus-within .suggestions{
+        .search-outer:focus-within{
             outline-color: var(--theme);
         }
         .suggestions{
-            outline: 2px solid #333;
-            border-radius: .3rem;
-            position: absolute;
+            position: relative;
             z-index: 5;
             top: 0;
             left: 0;
             width: 100%;
-            background: #222;
-            padding-top: 2.5em;
         }
         
         .suggestions ul{
@@ -141,6 +140,7 @@
                 position: absolute;
                 top: 0;
                 left: 0;
+                z-index: 4;
                 width: calc(100% - 2rem);
                 margin: 1rem;
             }
