@@ -51,6 +51,7 @@ function updateSuggestions(_suggestions){
         li.addEventListener("click", () => {
             search.value = text;
             submit();
+            suggestionsElement.innerHTML = "";
         })
         li.textContent = text;
         suggestionsElement.appendChild(li);

@@ -5,12 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <link rel="icon"
-        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📔</text></svg>">
+        href="icon.svg">
     <title>Dictionary</title>
     <meta name="theme-color" content="#ce4343"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📔</text></svg>" />
+    <link rel="apple-touch-icon" href="icon.svg" />
 
 </head>
 <body>
@@ -25,12 +25,12 @@
             color: #ddd;
             font-size: 1.5rem;
             font-family: 'Source Sans 3', sans-serif;
-            height: 100vh;
+            height: 90vh;
         }
         body,html{
             margin: 0;
             padding: 0;
-            overflow: hidden;
+            overflow: hidden !important;
         }
         main{
             padding: 2rem;
@@ -158,7 +158,7 @@
         <h1>Dictionary</h1>
         <section>
             <div class="search-outer">
-                <input id="search" type="search" placeholder="Search for a word" onclick="this.select()">
+                <input id="search" type="text" placeholder="Search for a word" onclick="this.select()">
                 <div class="suggestions">
                     <ul></ul>
                 </div>
